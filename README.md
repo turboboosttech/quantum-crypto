@@ -10,7 +10,9 @@ Post-quantum and symmetric cryptography for the 9Secure password manager.
 - XChaCha20-Poly1305 for authenticated encryption
 - ML-KEM (FIPS 203) for caller-owned session establishment
 - ML-DSA (FIPS 204) for pairing and session transcript authentication
+- P-256 ES256 signing primitives for passkey credentials
 - CSPRNG password generation
+- RFC 6238 TOTP with HMAC-SHA1, HMAC-SHA256, and HMAC-SHA512
 
 ## Audits
 

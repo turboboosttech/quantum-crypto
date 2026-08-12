@@ -12,6 +12,22 @@
 use pqcrypto_traits::Error as PqcryptoError;
 use thiserror::Error;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Error)]
+pub enum P256Error {
+    #[error("P-256 key generation failed")]
+    KeyGenerationFailed,
+    #[error("Invalid P-256 private key")]
+    InvalidPrivateKey,
+    #[error("Invalid P-256 public key")]
+    InvalidPublicKey,
+    #[error("Invalid ES256 signature")]
+    InvalidSignature,
+    #[error("ES256 signature verification failed")]
+    VerificationFailed,
+    #[error("Message too long: {size} bytes exceeds {max} byte limit")]
+    MessageTooLong { size: usize, max: usize },
+}
+
 #[derive(Debug, Error)]
 pub enum SignatureError {
     #[error("Signature verification failed")]
@@ -193,6 +209,18 @@ pub enum StreamingError {
     Cancelled,
     #[error("IO error: {0}")]
     Io(#[from] std::io::Error),
+}
+
+#[derive(Debug, Error, PartialEq, Eq)]
+pub enum TotpError {
+    #[error("TOTP secret is empty")]
+    EmptySecret,
+    #[error("TOTP period is invalid")]
+    InvalidPeriod,
+    #[error("TOTP digit count is invalid")]
+    InvalidDigits,
+    #[error("TOTP HMAC failed")]
+    HmacFailed,
 }
 
 #[derive(Debug, Error)]

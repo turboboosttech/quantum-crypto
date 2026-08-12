@@ -10,3 +10,4 @@
  */
 mod ml_dsa_tests;
 mod ml_kem_tests;
+mod p256_tests;

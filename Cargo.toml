@@ -3,7 +3,7 @@ name = "quantum-crypto"
 version = "1.0.0"
 edition = "2024"
 authors = ["TurboBoostTechnologies"]
-description = "Post-quantum secure encryption library using ML-KEM (FIPS 203), XChaCha20-Poly1305, and ML-DSA (FIPS 204)"
+description = "Cross-platform cryptography library with ML-KEM, ML-DSA, XChaCha20-Poly1305, and P-256 ES256"
 license-file = "LICENSE"
 
 [dependencies]
@@ -11,16 +11,18 @@ argon2 = { version = "0.5", features = ["zeroize"] }
 blake3 = "1.8"
 chacha20poly1305 = "0.10"
 hkdf = "0.13.0"
-hmac = "0.13.0"
+hmac = { version = "0.13.0", features = ["zeroize"] }
 lazy_static = "1.4"
 libc = "0.2"
 pqcrypto-mldsa = "0.1.2"
 pqcrypto-mlkem = "0.1.1"
 pqcrypto-traits = "0.3.5"
+p256 = { version = "0.13", default-features = false, features = ["std", "ecdsa", "pkcs8"] }
 rand = "0.8"
 rand_core = "0.6"
 serde = { version = "1.0.228", features = ["derive"] }
 serde_bytes = "0.11"
+sha1 = "0.11.0"
 sha2 = "0.11.0"
 subtle = "2.5"
 thiserror = "1.0"

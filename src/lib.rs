@@ -22,6 +22,7 @@ pub mod kdf;
 pub mod serialization;
 pub mod streaming;
 pub mod symmetric;
+pub mod totp;
 pub mod types;
 
 #[allow(deprecated)]
@@ -45,10 +46,14 @@ pub use crate::{
             MLKEM1024_PUBLIC_KEY_LENGTH, MLKEM1024_SECRET_KEY_LENGTH,
             MLKEM1024_SHARED_SECRET_LENGTH, decapsulate_key, encapsulate_key,
         },
+        p256::{
+            P256_MAX_MESSAGE_SIZE, P256_PUBLIC_KEY_LENGTH, P256KeyPair, generate_p256_keypair,
+            p256_public_key_from_pkcs8, sign_es256_der, verify_es256_der,
+        },
     },
     errors::{
-        Argon2idParamsError, EncryptionError, GeneratorError, KeyError, SecurityPostError,
-        StreamingError,
+        Argon2idParamsError, EncryptionError, GeneratorError, KeyError, P256Error,
+        SecurityPostError, StreamingError, TotpError,
     },
     kdf::{
         argon2id::{
@@ -79,6 +84,8 @@ pub use streaming::{
     DEFAULT_CHUNK_SIZE, DecryptStreamConfig, EncryptStreamConfig, MAX_CHUNK_SIZE, MIN_CHUNK_SIZE,
     StreamContext, StreamSummary, decrypt_stream, encrypt_stream,
 };
+
+pub use totp::{TotpAlgorithm, generate_totp};
 
 pub use generator::{
     DICEWARE_BITS_PER_WORD, DICEWARE_DEFAULT_SEPARATOR, DICEWARE_DEFAULT_WORD_COUNT,

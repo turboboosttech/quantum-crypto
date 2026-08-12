@@ -12,6 +12,7 @@
 pub mod keys;
 pub mod ml_dsa;
 pub mod ml_kem;
+pub mod p256;
 
 #[deprecated(note = "Use ml_dsa for FIPS 204 ML-DSA")]
 pub use ml_dsa as dilithium;
@@ -62,3 +63,7 @@ pub use ml_dsa::MLDSA87_SIGNATURE_LENGTH as DILITHIUM5_SIGNATURE_LENGTH;
 #[deprecated(note = "Use generate_keypair_with_mldsa")]
 pub use keys::generate_keypair_with_mldsa as generate_keypair_with_dilithium;
 pub use keys::{generate_keypair, generate_keypair_with_mldsa};
+pub use p256::{
+    P256_MAX_MESSAGE_SIZE, P256_PUBLIC_KEY_LENGTH, P256KeyPair, generate_p256_keypair,
+    p256_public_key_from_pkcs8, sign_es256_der, verify_es256_der,
+};
