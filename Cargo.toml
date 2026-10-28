@@ -14,8 +14,8 @@ hkdf = "0.13.0"
 hmac = { version = "0.13.0", features = ["zeroize"] }
 lazy_static = "1.4"
 libc = "0.2"
-pqcrypto-mldsa = "0.1.2"
-pqcrypto-mlkem = "0.1.1"
+pqcrypto-mldsa = { version = "0.1.2", default-features = false, features = ["std"] }
+pqcrypto-mlkem = { version = "0.1.1", default-features = false, features = ["std"] }
 pqcrypto-traits = "0.3.5"
 p256 = { version = "0.13", default-features = false, features = ["std", "ecdsa", "pkcs8"] }
 rand = "0.8"
